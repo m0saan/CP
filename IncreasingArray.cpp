@@ -1,8 +1,10 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+
 using namespace std;
 #define  ll long long
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -18,7 +20,7 @@ int main() {
     }
     ll ans{};
     for (ll i = 0; i < v.size(); ++i) {
-        if (i+1 < v.size() && v[i] > v[i + 1]) {
+        if (v[i] > v[i + 1]) {
             ans += (v[i] - v[i + 1]);
             v[i+1] += (v[i] - v[i + 1]);
         }

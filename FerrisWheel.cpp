@@ -1,40 +1,32 @@
-#include <iostream>
 #include <set>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-int main() {
+// 10 9 7 10 9 8 5 6 6 5
+// 9 8 8 9 10 8 5 8 7 10
+int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    int nOfChilds;
-    int maxWeight;
-    int nOfGen {};
 
+    int nOfChilds, maxWeight;
     cin >> nOfChilds >> maxWeight;
-    multiset<int> s;
+    vector<int> weights(nOfChilds);
 
-    int x;
-    int counter = 0;
-    // 10 9 7 10 9 8 5 6 6 5
-    while (cin >> x)
-        s.insert(x);
-    for (auto v : s){
-      if (v == maxWeight) {
-          nOfGen++;
-          continue;
-      }
-      counter += v;
-      if(counter == maxWeight) {
-          nOfGen++;
-          counter = 0;
-      }
-      if (counter + v > maxWeight){
-          nOfGen++;
-          counter = v;
-      }
+    for (int i = 0; i < nOfChilds; ++i)
+        cin >> weights[i];
+    sort(weights.begin(), weights.end());
+    int nOfG {};
+    size_t j = nOfChilds - 1;
+    int i = 0;
+    while (i <= j) {
+        if (weights[i] + weights[j] > maxWeight)
+            j--;
+        else { i++; j--;}
+        nOfG++;
     }
-
-    if (counter != 0)
-        nOfGen++;
-    cout << nOfGen << '\n';
+    cout << nOfG << '\n';
+    return 0;
 }
