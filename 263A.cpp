@@ -1,15 +1,15 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+int I,J,ans,a[5][5];
 int main(){
-    vector <vector<int>> a(25)
-    int P{};
     for (size_t i=0; i<5; ++i){
         for (size_t j=0; j<5; ++j){
-            cin >> a[j];
-            if (a[j] != 1) ++P;
+            cin >> a[i][j];
+			if (a[i][j] == 1) {I=i, J=j;};
         }
     }
-    cout << abs(13 - P);
+	ans = abs(I-2) + abs(J-2);
+	cout << ans << endl;
     return 0;
 }
