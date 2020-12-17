@@ -1,18 +1,23 @@
 #include <iostream>
 #include <set>
-#include <string>
 #include <sstream>
-#include <vector>
 using namespace std;
+
+string split(std::string& s, char delimiter)
+{
+    std::string token, out;
+    std::istringstream tokenStream(s);
+    while (std::getline(tokenStream, token, delimiter))
+        out += token;
+    return out;
+}
+
 int main(){
     set<int> s{'A', 'E', 'I', 'O', 'U', 'Y'};
     string S;
-    cin >> S;
-    istringstream iss(S);
-    vector<string> results(std::istream_iterator<std::string>{iss},
-                                     std::istream_iterator<std::string>());
-    string T = results[results.size()-2];
-    if (s.count(toupper(T.at(T.size()-2)))) cout << "YES" << endl;
+    getline(cin, S);
+    S = split(S, ' ');
+    if (s.count(toupper(S.at(S.size()-2)))) cout << "YES" << endl;
     else cout << "NO" << endl;
     return 0;
 }
