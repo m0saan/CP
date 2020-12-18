@@ -6,6 +6,6 @@ int main(){
     cin >> n >> m >> z;
     int g = gcd(m,n);
     int l = m*n / g;
-    cout << z /l << endl;
+    cout << z / l << endl;
     return 0;
 }
