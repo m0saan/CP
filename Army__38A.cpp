@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-    int n, in, ans{};
+    int n, ans{};
     cin >> n;
     vector<int> v1(n-1);
     vector<int> v2(n-1);
