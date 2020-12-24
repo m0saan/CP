@@ -5,10 +5,13 @@ using namespace std;
 int main(){
     int a{},other{};
     string S;
+    cin >> S;
     for (char &c : S){
         if (c=='a') ++a;
         else ++other;
     }
-    cout << other - (a+1)<< endl;
+    while (other>=a)
+        other--;
+    cout << other+a << endl;
     return 0;
 }
