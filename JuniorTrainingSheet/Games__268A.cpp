@@ -7,13 +7,15 @@ using namespace std;
 int main(){
 	int n{}, h{}, a{}, ans{};
 	cin >> n;
-	vector<pair<int, int>> vPr;
-	int nOfGames = n * (n-1);
-	for(int i=0; i<nOfGames; ++i){
+	vector<int> home;
+	vector<int> gest;
+	for(int i=0; i<n; ++i){
 		cin >> h >> a;
-		vPr.push_back(pair<int,int>(h,a));
+		home.push_back(h), gest.push_back(a);
 	}
-	for(auto &pair : vPr)
-		if (binary_search(vPr.begin(), vPr.end(), pair.second)) ans++;
+	for(size_t i=0; i<home.size(); ++i){
+		ans += count(home.begin(), home.end(), gest[i]);
+	}
+	cout << ans << endl;
 	return 0;
 }
