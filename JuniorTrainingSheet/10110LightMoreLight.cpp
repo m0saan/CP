@@ -1,18 +1,21 @@
 #include <iostream>
 #include <cmath>
-#include <vector>
+
 using namespace std;
 
 int main(){
-    long long in;
-    vector<int> v;
-    while (cin >> in && in!=0){
-        for (int i = 1; i*i <= in; ++i)
-            if (in%i==0) { v.push_back(in/i); }
-        if (v.size() % 2 ==0) cout << "YES"<< endl;
-        else cout << "NO" << endl;
-        cout << v.size() << endl;
-        v.clear();
+
+    // Fast input-output
+    std::ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
+
+    long long in, sq;
+    while (cin >> in && in!=0) {
+        sq = (int) sqrt(in);
+        if (sq * sq == in) std::cout << "yes" << std::endl;
+        else std::cout << "no" << std::endl;
     }
     return 0;
 }
