@@ -7,21 +7,19 @@
 using namespace std;
 
 int main(){
-    int n{}, a{}, b{}, sum{}, in;
+    int n{}, a{}, b{}, c{}, in, sum{};
     cin >> n >> a >> b;
-    int nOfTwoSeats = b*2;
     for (int i = 0; i < n; ++i) {
         cin >> in;
         if (in == 1) {
             if (a > 0) a--;
-            else if (nOfTwoSeats > 0) nOfTwoSeats-=1;
+            else if (b > 0) { b--; c++;}
+            else if (c>0) {c--;}
             else sum += 1;
         }
         else if (in == 2) {
-            if (nOfTwoSeats - 2 >= 0) nOfTwoSeats-=2;
-            else if (a - 2 >= 0) a -= 2;
-            //else if (a-1 >= 0) { a--; in--;}
-            else sum += in;
+            if (b > 0) b--;
+            else sum += 2;
         }
     }
     cout << sum << endl;
