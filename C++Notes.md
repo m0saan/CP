@@ -2,3 +2,22 @@
 
 - A good rule of thumb is that after reading a value with std::cin, remove the newline from the stream. This can be done using the following:
   `std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');`
+  
+- About const keyword:
+  `const double gravity { 9.8 }; // preferred use of const before type`
+  `int const sidesInSquare { 4 }; // okay, but not preferred`
+
+- Floating point equality
+  * The equality operators (== and !=) are much more troublesome.
+    Consider operator==, which returns true only if its operands are exactly equal.
+    Because even the smallest rounding error will cause two floating point numbers
+    to not be equal, operator== is at high risk for returning false when a true might be expected.
+    Operator!= has the same kind of problem.
+    
+  * Donald Knuth, a famous computer scientist, suggested the following method
+    in his book `“The Art of Computer Programming, Volume II: Seminumerical Algorithms (Addison-Wesley, 1969)”`:
+
+    ` // return true if the difference between a and b is within epsilon percent of the larger of a and b
+    bool approximatelyEqual(double a, double b, double epsilon) {
+        return (std::abs(a - b) <= (std::max(std::abs(a), std::abs(b)) * epsilon));
+    } ` 
