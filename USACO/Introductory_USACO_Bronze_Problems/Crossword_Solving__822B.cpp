@@ -4,39 +4,29 @@
 
 #include <iostream>
 #include <vector>
-#include <limits>
 
 using namespace std;
 
 int main(){
-    int n, m,j{}, nToBeReplaced{}, prevCount{numeric_limits<int>::max()}, index{}, l{-1};
-    vector<vector<int>> v{};
+    int n, m;
     string s, t;
     cin >> n >> m >> s >> t;
-    if (s.length() == 1 && t.length() == 1 && s != t) { cout << 1 << endl << 1 << endl; return 0; }
-    for (int i = 0; i < t.length(); ++i) {
-        if (s[j] == t[i]){
-            ++j;
-            nToBeReplaced = 0;
-            v.emplace_back(vector<int>{});
-            l++;
-            for (int k = i+1; k < i+s.length(); ++k) {
-                if (s[j++] != t[k]) { nToBeReplaced++; v[l].push_back(j); }
-            }
-            if (nToBeReplaced<prevCount) {
-                index = l;
-                nToBeReplaced = min(nToBeReplaced, prevCount);
-            }
-            prevCount = nToBeReplaced;
-            j=0;
+
+    vector<int> ans;
+    vector<int> newAns;
+
+    ans.reserve(n);
+    for (int i = 1; i <= n; ++i) ans.push_back(i);
+
+    for (int i = 0; i < m-n+1; ++i) {
+        newAns.clear();
+        for (int k = 0; k < n; ++k) {
+            if (t[i+k] != s[k]) newAns.push_back(k+1);
         }
+        if (newAns.size() < ans.size()) ans = newAns;
     }
-    cout << nToBeReplaced << endl;
-    if (l >= 0) {
-        auto vv = v[index];
-        for (auto const &e : vv) {
-            if (e != 0) cout << e << " ";
-        }
-    }
+    cout << ans.size() << endl;
+    for (const auto &e : ans)
+        cout << e << " ";
     return 0;
 }
