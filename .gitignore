@@ -44,3 +44,4 @@ CMakeLists.txt
 *.exe
 *.out
 *.app
+ac-library
