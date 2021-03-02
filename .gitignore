@@ -45,3 +45,5 @@ CMakeLists.txt
 *.out
 *.app
 ac-library
+tests.cpp
+main.cpp
