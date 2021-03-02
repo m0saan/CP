@@ -41,3 +41,27 @@
       - `constexpr int g_y { 3 };` // defines initialized internal global constexpr variable
         
       - `static int foo() {};`     // defines internal function
+    
+
+* If you need global constants and your compiler is C++17 capable, prefer defining inline constexpr global variables in a header file.
+
+`namespace constants`
+`{`
+`inline constexpr double pi { 3.14159 }; // note: now inline constexpr`
+`inline constexpr double avogadro { 6.0221413e23 };`
+`inline constexpr double my_gravity { 9.2 }; // m/s^2 -- gravity is light on this planet`
+`}`
+
+
+* Using declarations
+    - The using declaration of using std::cout; tells the compiler that we’re going to be using the object cout from the std namespace. 
+      So whenever it sees cout, it will assume that we mean std::cout.
+    - If there’s a naming conflict between std::cout and some other use of cout, std::cout will be preferred.
+
+  `using std::cout; // this using declaration tells the compiler that cout should resolve to std::cout`
+
+* The using directive
+    - The using directive using namespace std; tells the compiler that we want to use everything in the std namespace. 
+      So if the compiler finds a name it doesn’t recognize, it will check the std namespace. 
+      Consequently, when the compiler encounters cout (which it won’t recognize), it’ll look in the std namespace and find it there.
+    - If there’s a naming conflict between std::cout and some other use of cout, the compiler will flag it as an error (rather than preferring one instance over the other).
