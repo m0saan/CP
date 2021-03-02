@@ -26,6 +26,7 @@
     }  
     ```
 
+    
   C++ provides 6 bit manipulation operators, often called bitwise operators:
   
   |   Operator    |     Symbol	  |    Form	   |            Operation                 |
@@ -56,15 +57,29 @@ namespace constants {
 }
 ```
 
+
 * Using declarations
     - The using declaration of using std::cout; tells the compiler that we’re going to be using the object cout from the std namespace. 
       So whenever it sees cout, it will assume that we mean std::cout.
     - If there’s a naming conflict between std::cout and some other use of cout, std::cout will be preferred.
 
+
   `using std::cout; // this using declaration tells the compiler that cout should resolve to std::cout`
+
 
 * The using directive
     - The using directive using namespace std; tells the compiler that we want to use everything in the std namespace. 
       So if the compiler finds a name it doesn’t recognize, it will check the std namespace. 
       Consequently, when the compiler encounters cout (which it won’t recognize), it’ll look in the std namespace and find it there.
     - If there’s a naming conflict between std::cout and some other use of cout, the compiler will flag it as an error (rather than preferring one instance over the other).
+
+
+  `using namespace std; // this using directive tells the compiler that we're using everything in the std namespace!`
+
+* Typedefs and type aliases
+    - Given the following typedef:
+        - ` typedef double distance_t; // define distance_t as an alias for type double `
+    
+    - This can be declared as the following type alias:
+        - ` using distance_t = double; // define distance_t as an alias for type double`
+    + The two are functionally equivalent.
