@@ -4,8 +4,10 @@
   `std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');`
   
 - About const keyword:
-  `const double gravity { 9.8 }; // preferred use of const before type`
-  `int const sidesInSquare { 4 }; // okay, but not preferred`
+  ```
+  const double gravity { 9.8 }; // preferred use of const before type
+  int const sidesInSquare { 4 }; // okay, but not preferred
+  ```
 
 - Floating point equality
   * The equality operators (== and !=) are much more troublesome.
@@ -17,10 +19,12 @@
   * Donald Knuth, a famous computer scientist, suggested the following method
     in his book `“The Art of Computer Programming, Volume II: Seminumerical Algorithms (Addison-Wesley, 1969)”`:
 
-    ` // return true if the difference between a and b is within epsilon percent of the larger of a and b
+    ```
+    // return true if the difference between a and b is within epsilon percent of the larger of a and b
     bool approximatelyEqual(double a, double b, double epsilon) {
         return (std::abs(a - b) <= (std::max(std::abs(a), std::abs(b)) * epsilon));
-    } ` 
+    }  
+    ```
 
   C++ provides 6 bit manipulation operators, often called bitwise operators:
   
@@ -44,14 +48,13 @@
     ```
 
 * If you need global constants and your compiler is C++17 capable, prefer defining inline constexpr global variables in a header file.
-
-`namespace constants`
-`{`
-`inline constexpr double pi { 3.14159 }; // note: now inline constexpr`
-`inline constexpr double avogadro { 6.0221413e23 };`
-`inline constexpr double my_gravity { 9.2 }; // m/s^2 -- gravity is light on this planet`
-`}`
-
+```
+namespace constants {
+    inline constexpr double pi { 3.14159 }; // note: now inline constexpr
+    inline constexpr double avogadro { 6.0221413e23 };
+    inline constexpr double my_gravity { 9.2 }; // m/s^2 -- gravity is light on this planet
+}
+```
 
 * Using declarations
     - The using declaration of using std::cout; tells the compiler that we’re going to be using the object cout from the std namespace. 
