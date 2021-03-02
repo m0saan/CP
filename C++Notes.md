@@ -35,14 +35,13 @@
   -------------------------------------------------------------------------------------
     
   * Internal global variables definitions:
-      - `static int g_x;`          // defines non-initialized internal global variable (zero initialized by default)
-      - `static int g_x{ 1 };`     // defines initialized internal global variable
-  
-      - `const int g_y { 2 };`     // defines initialized internal global const variable
-      - `constexpr int g_y { 3 };` // defines initialized internal global constexpr variable
-        
-      - `static int foo() {};`     // defines internal function
-    
+    ```
+    static int g_x;          // defines non-initialized internal global variable (zero initialized by default)
+    static int g_x{ 1 };     // defines initialized internal global variable 
+    const int g_y { 2 };     // defines initialized internal global const variable 
+    constexpr int g_y { 3 }; // defines initialized internal global constexpr variable 
+    static int foo() {};     // defines internal function
+    ```
 
 * If you need global constants and your compiler is C++17 capable, prefer defining inline constexpr global variables in a header file.
 
