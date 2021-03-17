@@ -3,21 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	n, which := 0, 0
+	var n = 0
+	which := 0
 	fmt.Scan(&n, &which)
-
-	numbers := make([]int, n)
-	// evens := make([]int, 0)
-	k := 0
-	for i, j := 1, n-1; i<=n; i++ {
-		if i % 2 == 0 {
-			numbers[j] = i
-			j--
-		} else {
-			numbers[k] = i
-			k++
-		}
+	if which > n/2 {
+		i := 0
+		for ; i<=(which - n/2); i+=2 {}
+		fmt.Println(i)
+	} else {
+		k := 1
+		for i := 1; i<which; i++ { k+=2}
+		fmt.Println(k)
 	}
-	fmt.Println(numbers)
-	fmt.Println(numbers[which-1])
 }
