@@ -1,18 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	var n = 0
-	which := 0
+	var n, which uint64 = 0, 0
 	fmt.Scan(&n, &which)
-	if which > n/2 {
-		i := 0
-		for ; i<=(which - n/2); i+=2 {}
-		fmt.Println(i)
+	var midPoint uint64 = 0
+	if n%2==0 { midPoint = n/2
 	} else {
-		k := 1
-		for i := 1; i<which; i++ { k+=2}
-		fmt.Println(k)
+		midPoint = n/2 + 1
+	}
+	if which > midPoint {
+		nn := uint64(which-midPoint)
+		fmt.Println(uint64(nn * 2))
+	} else {
+		fmt.Println(uint64(2 * which -1))
 	}
 }
