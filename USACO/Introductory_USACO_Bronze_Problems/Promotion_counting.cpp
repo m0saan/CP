@@ -18,29 +18,32 @@ using pi = pair<int,int>;
 #define s second
 #define mp make_pair
 
-ostream &operator <<(ostream &ostream, const vector<pi> &v) {
-    for (auto &e : v) {
+ostream &operator << (ostream &ostream, const vector<pi> &v) {
+    for (auto &e : v)
         ostream << e.first << " " << e.second << endl;
-    }
     return ostream;
 }
 
 void setIO(string name) { // name is nonempty for USACO file I/O
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); // see Fast Input & Output
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr); // see Fast Input & Output
     // alternatively, cin.tie(0)->sync_with_stdio(0);
     if (sz(name)) {
-        freopen((name + ".in").c_str(), "r", stdin); // see Input & Output
-        freopen((name + ".out").c_str(), "w", stdout);
+        if (freopen((name + ".in").c_str(), "r", stdin) == NULL)
+            cout << "Something went wrong" << endl; // see Input & Output
+        if (freopen((name + ".out").c_str(), "w", stdout) == NULL)
+            cout << "Something went wrong" << endl;
     }
 }
 
-
-
 int main() {
     setIO("promote");
-    vector<pi> numberOfParticipants(4);
+    vector<pi> nOfPart(4);
     for (int i = 0; i < 4; ++i)
-        cin >>  numberOfParticipants[i].first >> numberOfParticipants[i].second;
-    cout << numberOfParticipants << endl;
+        cin >> nOfPart[i].first >> nOfPart[i].second;
+    cout << nOfPart[3].second - nOfPart[3].first + nOfPart[2].second - nOfPart[2].first
+    + nOfPart[1].second - nOfPart[1].first << endl;
+
+    cout << nOfPart[3].second - nOfPart[3].first + nOfPart[2].second - nOfPart[2].first << endl;
+    cout << nOfPart[3].second - nOfPart[3].first << endl;
 }
