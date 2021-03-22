@@ -10,7 +10,7 @@ int main(){
     ofstream fout("./teleport.out");
     int a,b,x,y;
     fin >> a >> b >> x >> y;
-    auto cc = abs(min(x,y) - a);
-    fout << min(abs(a-b), cc+abs(max(x,y)-b));
+    auto ans = min( { abs(a-b), abs(a-x) + abs(b-y), abs(a-y) + abs(b-x)} );
+    fout << ans;
     return 0;
 }
