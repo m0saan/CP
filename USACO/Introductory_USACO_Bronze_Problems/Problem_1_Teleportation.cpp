@@ -2,21 +2,15 @@
 #include <iostream>
 #include <algorithm>
 
-int ARR[4];
+using namespace std;
 
 int main(){
 
-    std::ifstream fin("/Users/moboustt/Desktop/CP/USACO/Introductory_USACO_Bronze_Problems/teleport.in");
-    std::ofstream fout("/Users/moboustt/Desktop/CP/USACO/Introductory_USACO_Bronze_Problems/teleport.out");
-    for (int & i : ARR)
-        fin >> i;
-    int ss = abs(ARR[0] - ARR[1]);
-    std::sort(ARR, ARR+4);
-    int nSum{};
-    nSum = abs(ARR[0] - ARR[1]) + abs(ARR[2] - ARR[3]);
-    if (ss < nSum)
-        fout << ss << std::endl;
-    else
-        fout << nSum << std::endl;
+    ifstream fin("./teleport.in");
+    ofstream fout("./teleport.out");
+    int a,b,x,y;
+    fin >> a >> b >> x >> y;
+    auto cc = abs(min(x,y) - a);
+    fout << min(abs(a-b), cc+abs(max(x,y)-b));
     return 0;
 }
