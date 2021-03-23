@@ -11,6 +11,16 @@ using ll = long long;
 // You can use '#' sign to get exact name of an argument passed to a macro:
 #define what_is(x) cerr << #x << " is " << x << endl;
 
+#define error(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); \
+istream_iterator<string> _it(_ss); err(_it, args); }
+
+void err(istream_iterator<string> it) {}
+template<typename T, typename... Args>
+void err(istream_iterator<string> it, T a, Args... args) {
+    cerr << *it << " = " << a << endl;
+    err(++it, args...);
+}
+
 
 using vi = vector<int>;
 #define pb push_back
@@ -130,6 +140,8 @@ int main() {
 
 #if (1)
     std::cout << sum(5, 7, 2, 2) + sum(3.4, 4.5) << endl;
+    int c =20, d = 40;
+    error(10, 20, c , d);
 #endif
     return 0;
 }
