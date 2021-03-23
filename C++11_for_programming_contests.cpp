@@ -95,11 +95,33 @@ int main() {
     cout << anotherV;
 #endif
 
-#if 1
+#if 0
     int x = 10;
     string str = "Hello C++";
     what_is(x);
     what_is(str);
+#endif
+
+#if 1
+    // Get a gcd of two numbers with out re-implementing it.
+    auto gcd = std::__1::gcd(10, 20);
+    what_is(gcd);
+
+    // This function returns 1 + least significant 1-bit of x.
+    auto x = ffs(0); // return 0
+    what_is(x);
+    x = ffs(1); // return 1
+    what_is(x);
+    x = ffs(2); // return 2 -> since 2 == 10
+    what_is(x);
+    x = ffs(4); // return 3 -> since 4 == 100
+    what_is(x);
+
+    // This function returns number of leading 0-bits of x which starts from most significant bit position.
+    auto y = __builtin_clz(10); // return 28 since 10 == ...1010 in binary representation. [...] for leading 0s
+    // Explanation:
+    // Number of bits in a unsigned int is 32. so function returns 32 — 4 = 28.
+    what_is(y);
 #endif
     return 0;
 }
