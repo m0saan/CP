@@ -154,7 +154,7 @@ int main() {
     error(10, 20, c , d);
 #endif
 
-#if (1)
+#if (0)
     int i, j;
     #if(0)
     for (i = 0; i < arrSize; i++) {
@@ -169,6 +169,15 @@ int main() {
         for (j = 0; j < arrSize; j++)
             cout << arr2D[i][j] << " \n"[ j == arrSize-1];
     }
+#endif
+
+
+    // You can also use ignore keyword in tie to ignore a value.
+#if (1)
+    tuple<int, int, int, char> t (3, 4, 5, 'g');
+    int a, b;
+    tie(ignore, ignore, a, b) = t;
+    cout << a << ' ' << static_cast<char>(b) << '\n';
 #endif
 
     return 0;
