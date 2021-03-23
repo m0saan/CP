@@ -8,6 +8,10 @@ using namespace std;
 
 using ll = long long;
 
+// You can use '#' sign to get exact name of an argument passed to a macro:
+#define what_is(x) cerr << #x << " is " << x << endl;
+
+
 using vi = vector<int>;
 #define pb push_back
 #define rsz resize
@@ -77,7 +81,7 @@ int main() {
         cout << i << endl;
 #endif
 
-#if 1
+#if 0
     vector<int> v;
     v.push_back(10);
     v.push_back(20);
@@ -89,6 +93,13 @@ int main() {
 
     cout << v;
     cout << anotherV;
+#endif
+
+#if 1
+    int x = 10;
+    string str = "Hello C++";
+    what_is(x);
+    what_is(str);
 #endif
     return 0;
 }
