@@ -14,7 +14,8 @@ using ll = long long;
 #define error(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); \
 istream_iterator<string> _it(_ss); err(_it, args); }
 
-void err(istream_iterator<string> it) {}
+void err(const istream_iterator<string>& it) {}
+
 template<typename T, typename... Args>
 void err(istream_iterator<string> it, T a, Args... args) {
     cerr << *it << " = " << a << endl;
@@ -32,15 +33,17 @@ using pi = pair<int, int>;
 #define f first
 #define s second
 #define mp make_pair
+#define mt make_tuple
+#define eb emplace_back
 
-void setIO(string name) { // name is nonempty for USACO file I/O
+void setIO(const string& name) { // name is nonempty for USACO file I/O
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr); // see Fast Input & Output
     // alternatively, cin.tie(0)->sync_with_stdio(0);
     if (sz(name)) {
-        if (freopen((name + ".in").c_str(), "r", stdin) == NULL)
+        if (freopen((name + ".in").c_str(), "r", stdin) == nullptr)
             cout << "Something went wrong" << endl; // see Input & Output
-        if (freopen((name + ".out").c_str(), "w", stdout) == NULL)
+        if (freopen((name + ".out").c_str(), "w", stdout) == nullptr)
             cout << "Something went wrong" << endl;
     }
 }
@@ -49,9 +52,9 @@ template<typename T>
 struct number_iterator : std::iterator<random_access_iterator_tag, T> {
     T v;
 
-    number_iterator(T _v) : v(_v) {}
+    [[maybe_unused]] explicit number_iterator(T _v) : v(_v) {}
 
-    operator T &() { return v; }
+    explicit operator T &() { return v; }
 
     T operator*() const { return v; }
 };
@@ -74,19 +77,26 @@ number_range<T> range(T e) { return number_range<T>(0, e); }
 // inclusive range
 template<typename T>
 number_range<T> range(T b, T e) { return number_range<T>(b, e); }
-template <typename T>
-ostream & operator<<(ostream &ostream, vector<T> const & container) {
+
+template<typename T>
+ostream &operator<<(ostream &ostream, vector<T> const &container) {
     ostream << "[ ";
     for (auto &e : container)
         ostream << e << " ";
-    ostream << ']'<< endl;
+    ostream << ']' << endl;
     return ostream;
 }
 
 int sum() { return 0; }
 
-template <typename T, typename... Args>
+template<typename T, typename... Args>
 auto sum(T a, Args... args) { return a + sum(args...); }
+
+constexpr int arrSize = 3;
+[[maybe_unused]] int arr1D[arrSize] = {1, 2, 3};
+int arr2D[arrSize][arrSize] = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+
+typedef tuple<int,int,int> State; // operator< defined
 
 int main() {
 #if 0
@@ -138,10 +148,28 @@ int main() {
     what_is(y);
 #endif
 
-#if (1)
+#if (0)
     std::cout << sum(5, 7, 2, 2) + sum(3.4, 4.5) << endl;
     int c =20, d = 40;
     error(10, 20, c , d);
 #endif
+
+#if (1)
+    int i, j;
+    #if(0)
+    for (i = 0; i < arrSize; i++) {
+        for (j = 0; j < arrSize; j++)
+            cout << arr2D[i][j] << " ";
+        cout << "\n";
+    }
+    #endif
+
+    // The above code is equivalent to the following code.
+    for (i = 0; i < arrSize; i++) {
+        for (j = 0; j < arrSize; j++)
+            cout << arr2D[i][j] << " \n"[ j == arrSize-1];
+    }
+#endif
+
     return 0;
 }
