@@ -73,6 +73,10 @@ ostream & operator<<(ostream &ostream, vector<T> const & container) {
     return ostream;
 }
 
+int sum() { return 0; }
+
+template <typename... Args>
+int sum(int a, Args... args) { return a + sum(args...); }
 
 int main() {
 #if 0
@@ -102,7 +106,7 @@ int main() {
     what_is(str);
 #endif
 
-#if 1
+#if (0)
     // Get a gcd of two numbers with out re-implementing it.
     auto gcd = std::__1::gcd(10, 20);
     what_is(gcd);
@@ -122,6 +126,10 @@ int main() {
     // Explanation:
     // Number of bits in a unsigned int is 32. so function returns 32 — 4 = 28.
     what_is(y);
+#endif
+
+#if (1)
+    std::cout << sum(5, 7, 2, 2) + sum(3, 4) << endl;
 #endif
     return 0;
 }
