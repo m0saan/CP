@@ -75,8 +75,8 @@ ostream & operator<<(ostream &ostream, vector<T> const & container) {
 
 int sum() { return 0; }
 
-template <typename... Args>
-int sum(int a, Args... args) { return a + sum(args...); }
+template <typename T, typename... Args>
+auto sum(T a, Args... args) { return a + sum(args...); }
 
 int main() {
 #if 0
@@ -129,7 +129,7 @@ int main() {
 #endif
 
 #if (1)
-    std::cout << sum(5, 7, 2, 2) + sum(3, 4) << endl;
+    std::cout << sum(5, 7, 2, 2) + sum(3.4, 4.5) << endl;
 #endif
     return 0;
 }
