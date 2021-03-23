@@ -37,9 +37,9 @@ int main() {
     string str;
     for (int i = 0; i < n; ++i) {
         cin >> str;
-        if (i != 0 && i+1 != n && count + str.length() <= 7)
+        if (i != 0 && count + str.length() <= k)
             cout << " ";
-        if (count + str.length() <= 7) {
+        if (count + str.length() <= k) {
             cout << str;
             count += str.length();
         } else {
