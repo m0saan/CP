@@ -60,11 +60,35 @@ number_range<T> range(T e) { return number_range<T>(0, e); }
 // inclusive range
 template<typename T>
 number_range<T> range(T b, T e) { return number_range<T>(b, e); }
+template <typename T>
+ostream & operator<<(ostream &ostream, vector<T> const & container) {
+    ostream << "[ ";
+    for (auto &e : container)
+        ostream << e << " ";
+    ostream << ']'<< endl;
+    return ostream;
+}
 
 
 int main() {
+#if 0
     std::array<int, 10> arr{1, 2, 3, 4, 5, 6};
     for(auto i : range(10))
         cout << i << endl;
+#endif
+
+#if 1
+    vector<int> v;
+    v.push_back(10);
+    v.push_back(20);
+
+    // Instead
+
+    vector<int> anotherV;
+    anotherV = {10, 20};
+
+    cout << v;
+    cout << anotherV;
+#endif
     return 0;
 }
