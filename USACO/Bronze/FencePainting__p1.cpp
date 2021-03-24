@@ -44,6 +44,10 @@ int main() {
     setIO("paint");
     int a, b, c, d;
     cin >> a >> b >> c >> d;
-    cout << max({a, b, c, d}) - min({a, b, c, d}) << endl;
+    if ((a >= c && a >= d && b >= d && b >= c) || (c >= a && c >= b && d >= b && d >= a))
+        cout << abs(b - a) + abs(d - c) << endl;
+    else
+        cout << abs(max({a, b, c, d}) - min({a, b, c, d})) << endl;
+
     return 0;
 }
