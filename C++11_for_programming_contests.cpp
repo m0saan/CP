@@ -173,11 +173,23 @@ int main() {
 
 
     // You can also use ignore keyword in tie to ignore a value.
-#if (1)
+#if (0)
     tuple<int, int, int, char> t (3, 4, 5, 'g');
     int a, b;
     tie(ignore, ignore, a, b) = t;
     cout << a << ' ' << static_cast<char>(b) << '\n';
+#endif
+
+#if (0)
+    using a non-const variable
+    int daysPerWeek{};
+    std::cin >> daysPerWeek;
+    int numberOfLessonsPerDay[daysPerWeek]{}; // Not ok -- daysPerWeek is not a compile-time constant!
+
+// using a runtime const variable
+    int temp{ 5 };
+    const int daysPerWeek{ temp }; // the value of daysPerWeek isn't known until runtime, so this is a runtime constant, not a compile-time constant!
+    int numberOfLessonsPerDay[daysPerWeek]{}; // Not ok
 #endif
 
     return 0;
