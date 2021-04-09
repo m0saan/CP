@@ -1,8 +1,13 @@
 //
 // Created by moboustt on 23/3/2021.
 //
+#if(0)
+    #include <bits/stdc++.h>
+#endif
 
-#include <bits/stdc++.h>
+#if(1)
+    #include "stdc++.h"
+#endif
 
 using namespace std;
 void passArray(int prime[5]);
@@ -235,7 +240,7 @@ int main() {
 }
 
 
-void passArray(int prime[5]) // prime is the actual array {
+void passArray(int prime[5]) { // prime is the actual array 
 	prime[0] = 11; // so changing it here will change the original argument!
 	prime[1] = 7;
 	prime[2] = 5;
