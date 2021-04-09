@@ -192,5 +192,36 @@ int main() {
     int numberOfLessonsPerDay[daysPerWeek]{}; // Not ok
 #endif
 
+#if (1)
+
+    // Initialize all elements to 0
+    int array[5]{ };
+
+    // Initialize all elements to 0.0
+    double array_d[5]{ };
+
+    // Initialize all elements to an empty string
+    std::string array_str[5]{ };
+
+    int arr1[5]{ 0, 1, 2, 3, 4 }; // explicitly define the length of the array
+    int arr2[]{ 0, 1, 2, 3, 4 }; // let the initializer list set length of the array
+
+    // Arrays and enums
+    enum StudentNames
+    {
+        kenny, // 0
+        kyle, // 1
+        stan, // 2
+        butters, // 3
+        cartman, // 4
+        max_students // 5
+    };
+
+    int testScores[max_students]{}; // allocate 5 integers
+    testScores[stan] = 76; // stan == 2 equivalent to testScores[2]
+    cout << testScores[stan] << endl; // prints 76
+
+#endif
+
     return 0;
 }
