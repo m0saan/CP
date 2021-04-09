@@ -18,7 +18,7 @@ void passArray(int prime[5]) // prime is the actual array
 void  getArraySize(int arr[]){
 
     // This will cause a compile time error.
-    std::cout << "the array has: " << std::size(arr) << " elements." << std::endl;
+    // std::cout << "the array has: " << std::size(arr) << " elements." << std::endl;
 
     // We can use instead the sizeof operator
     // it doesn’t error out like std::size() does. Instead, it returns the size of a pointer.
