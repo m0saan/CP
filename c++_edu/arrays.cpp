@@ -23,7 +23,9 @@ void  getArraySize(int arr[]){
     // We can use instead the sizeof operator
     // it doesn’t error out like std::size() does. Instead, it returns the size of a pointer.
     std::cout << "Using the size of operator: " << sizeof(arr) / sizeof(arr[0]) << std::endl; // prints 2.
-} 
+}
+
+
 
 
 
