@@ -27,7 +27,29 @@ int main() {
     std::cout << myPair3.first << " " << myPair3.second << std::endl;
 #endif
 
-    
+    /*
+     * Of course, we can hold more than two values with something like pair<int,pair<int,int>>,
+     * but it gets messy when you need a lot of elements. In this case, using tuples might be more convenient.
+     * tuple<type1, type2, ..., typeN> t: Creates a tuple with N elements, i'th one being of typei.
+     * make_tuple(a, b, c, ..., d): Returns a tuple with values written in the brackets.
+     * get<i>(t): Returns the i'th element of the tuple t. Can also be used to change the element of a tuple.
+     * This operation only works for constant i. Namely, it is not allowed to do something like the following since i is not constant
+     * tie(a, b, c, ..., d) = t : Assigns a, b, c, ..., d to the elements of the tuple t accordingly.
+     */
+
+    int a = 3, b = 4, c = 5;
+    std::tuple<int, int , int> t1(a,b,c);
+    std::cout << std::get<0>(t1) << " " << std::get<1>(t1) << " " << std::get<2>(t1) << std::endl;
+
+    get<0>(t1) = 7;
+    std::cout << get<0>(t1) << " " << get<1>(t1) << " " << get<2>(t1) << std::endl;
+
+    std::tuple<std::string, std::string, int> tp2 = std::make_tuple("Hello", "world", 100);
+    std::string s1,s2;
+    int x;
+    std::tie(s1,s2,x) = tp2;
+    std::cout << s1 << " " << s2 << " " << x << std::endl;
+
     return 0;
 
 }
